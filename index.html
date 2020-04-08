@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>动态时间显示</title>
+    <title>World of Our Love</title>
     <script language="javascript">
         var t = null;
         t = setTimeout(time,1000);//开始执行
@@ -14,14 +14,38 @@
             var mm=dt.getMonth()+1;
             var d=dt.getDate();
             var weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+            var mDay = [31,28,31,30,31,30,31,31,30,31,30,31];
             var day=dt.getDay();
             var h=dt.getHours();
             var m=dt.getMinutes();
             var s=dt.getSeconds();
-            if(h<10){h="0"+h;}
-            if(m<10){m="0"+m;}
-            if(s<10){s="0"+s;}
-            document.getElementById("timeShow").innerHTML =  "现在的时间为："+y+"年"+mm+"月"+d+"日"+weekday[day]+""+h+":"+m+":"+s+"";
+            var delta_y = y - 2020;
+            var delta_m = mm - 1;
+            var resDate = 0;
+            for (var i=0;i<delta_m;i++)
+            {
+            	resDate = resDate + mDay[i];
+            }
+            var yearDay = Math.ceil((delta_y)/4)+delta_y*365-1;
+            var totDay = resDate+yearDay;
+            var tmpsec = 60*60*h+60*m+s;
+            var stdsec = 60*60*1+60*45+0;
+            var dtt = tmpsec - stdsec;
+            var curH = 0;
+            var curM = 0;
+            var curS = 0;
+            if(dtt>=0)
+            {
+            	totDay = totDay + 1;
+            }
+            else
+            {
+            	dtt = 86400 - stdsec + tmpsec;
+            }
+            var curH = Math.floor(dtt/3600);
+            var curM = Math.floor((dtt-curH*3600)/60);
+            var curS = dtt - curH*3600 - curM*60;
+            document.getElementById("timeShow").innerHTML =  "筛筛和天天已经在一起"+totDay+"天"+curH+"小时"+curM+"分"+curM+"秒啦~";
             t = setTimeout(time,1000); //设定定时器，循环执行
         }
     </script>
