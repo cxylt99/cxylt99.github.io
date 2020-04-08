@@ -45,7 +45,7 @@
             var curH = Math.floor(dtt/3600);
             var curM = Math.floor((dtt-curH*3600)/60);
             var curS = dtt - curH*3600 - curM*60;
-            document.getElementById("timeShow").innerHTML =  "筛筛和天天已经在一起"+totDay+"天"+curH+"小时"+curM+"分"+curM+"秒啦~";
+            document.getElementById("timeShow").innerHTML =  "筛筛和天天已经在一起"+totDay+"天"+curH+"小时"+curM+"分"+curS+"秒啦~";
             t = setTimeout(time,1000); //设定定时器，循环执行
         }
     </script>
