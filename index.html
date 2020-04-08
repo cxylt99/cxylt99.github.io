@@ -20,6 +20,43 @@ body {
   overflow: hidden;
 }
 
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+  }
+  100% {
+    -webkit-transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+  }
+}
+
+@-moz-keyframes rotate {
+  0% {
+    -moz-transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+  }
+  100% {
+    -moz-transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+  }
+}
+
+@-o-keyframes rotate {
+  0% {
+    -o-transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+  }
+  100% {
+    -o-transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+  }
+  100% {
+    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+  }
+}
+
+
 .main{
         text-align: center; /*让div内部文字居中*/
         border-radius: 20px;
@@ -32,6 +69,48 @@ body {
         right: 0;
         bottom: 0;
     }
+
+.stars {
+  -webkit-transform: perspective(500px);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform: perspective(500px);
+  -moz-transform-style: preserve-3d;
+  -o-transform: perspective(500px);
+  -o-transform-style: preserve-3d;
+  transform: perspective(500px);
+  transform-style: preserve-3d;
+  position: absolute;
+  bottom: 0;
+  -webkit-perspective-origin: 100% 50%;
+  -moz-perspective-origin: 100% 50%;
+  -o-perspective-origin: 100% 50%;
+  perspective-origin: 100% 50%;
+  left: 50%;
+  -webkit-animation: rotate 90s infinite linear;
+  -moz-animation: rotate 90s infinite linear;
+  -o-animation: rotate 90s infinite linear;
+  animation: rotate 90s infinite linear;
+}
+
+.star {
+  width: 2px;
+  height: 2px;
+  background: #F7F7B6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-origin: 0 0 -300px;
+  -webkit-transform: translate3d(0, 0, -300px);
+  -moz-transform-origin: 0 0 -300px;
+  -moz-transform: translate3d(0, 0, -300px);
+  -o-transform-origin: 0 0 -300px;
+  -o-transform: translate3d(0, 0, -300px);
+  transform-origin: 0 0 -300px;
+  transform: translate3d(0, 0, -300px);
+  backface-visibility: hidden;
+}
+
+
 </style>
 
 </head>
@@ -58,7 +137,7 @@ $(document).ready(function(){
   }
   $(".star").each(function(){
     var cur=$(this);
-    var s=0.5+(Math.random()*1);
+    var s=0.2+(Math.random()*1);
     var curR=r+(Math.random()*300);
     cur.css({ 
       transformOrigin:"0 0 "+curR+"px",
