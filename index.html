@@ -50,6 +50,8 @@ body {
   position: absolute;
   bottom: 0;
   perspective-origin: 50% 100%;
+  -webkit-perspective-origin: 50% 100%;
+  -moz-perspective-origin: 50% 100%;
   left: 50%;
   animation: rotate 90s infinite linear;
   -webkit-animation: rotate 90s infinite linear;
@@ -71,34 +73,7 @@ body {
   -moz-transform: translate3d(0, 0, -300px);
   backface-visibility: hidden;
 }
-.table{
-	width: 400px;
-	height: 350px;
-	margin: 80px auto;
-}
-.table form{
-	width: 100%;
-}
-.table .name{
-	width: 280px;
-	margin: 20px auto 30px auto;
-	display: block;
-	height: 30px;
-	border-radius: 20px;
-	border: none;
-	background: rgba(0,0,0,0.2);
-	text-indent: 0.5em;
-}
-.table .btn{
-	width: 100px;
-	height: 30px;
-	background: rgba(0,0,0,0.1);
-	border-radius: 8px;
-	border: none;
-	color: white;
-	margin: 0 auto;
-	display: block;
-}
+
 
 </style>
 
