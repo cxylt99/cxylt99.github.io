@@ -14,15 +14,6 @@ body {
   overflow: hidden;
 }
 
-@keyframes rotate {
-  0% {
-    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
-  }
-  100% {
-    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
-  }
-}
-
 @-webkit-keyframes rotate {
   0% {
     -webkit-transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
@@ -50,25 +41,33 @@ body {
   }
 }
 
+@keyframes rotate {
+  0% {
+    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+  }
+  100% {
+    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+  }
+}
 
 
 .stars {
-  transform: perspective(500px);
-  transform-style: preserve-3d;
   -webkit-transform: perspective(500px);
   -webkit-transform-style: preserve-3d;
   -moz-transform: perspective(500px);
   -moz-transform-style: preserve-3d;
   -o-transform: perspective(500px);
   -o-transform-style: preserve-3d;
+  transform: perspective(500px);
+  transform-style: preserve-3d;
   position: absolute;
   bottom: 0;
   perspective-origin: 50% 100%;
   left: 50%;
-  animation: rotate 90s infinite linear;
   -webkit-animation: rotate 90s infinite linear;
   -moz-animation: rotate 90s infinite linear;
   -o-animation: rotate 90s infinite linear;
+  animation: rotate 90s infinite linear;
 }
 
 .star {
@@ -78,14 +77,14 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  transform-origin: 0 0 -300px;
-  transform: translate3d(0, 0, -300px);
   -webkit-transform-origin: 0 0 -300px;
   -webkit-transform: translate3d(0, 0, -300px);
   -moz-transform-origin: 0 0 -300px;
   -moz-transform: translate3d(0, 0, -300px);
   -o-transform-origin: 0 0 -300px;
   -o-transform: translate3d(0, 0, -300px);
+  transform-origin: 0 0 -300px;
+  transform: translate3d(0, 0, -300px);
   backface-visibility: hidden;
 }
 
