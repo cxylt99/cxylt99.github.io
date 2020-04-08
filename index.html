@@ -22,6 +22,15 @@ body {
     transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
   }
 }
+
+@-webkit-keyframes rotate {
+  0% {
+    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+  }
+  100% {
+    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+  }
+}
 .stars {
   transform: perspective(500px);
   transform-style: preserve-3d;
