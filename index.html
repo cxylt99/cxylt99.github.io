@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html>
-<title>World of Our Love</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<style>
-body,h1 {font-family: "Raleway", sans-serif}
-body, html {height: 100%}
-.bgimg {
-  background-image: url('kkk.jpg');
-  min-height: 100%;
-  background-position: center;
-  background-size: cover;
-}
-</style>
-  <script language="javascript">
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>World of Our Love</title>
+    <script language="javascript">
         var t = null;
         t = setTimeout(time,1000);//开始执行
         function time()
@@ -56,15 +44,15 @@ body, html {height: 100%}
             var curH = Math.floor(dtt/3600);
             var curM = Math.floor((dtt-curH*3600)/60);
             var curS = dtt - curH*3600 - curM*60;
-            document.getElementById("timeShow").innerHTML =  totDay+"天"+curH+"小时"+curM+"分"+curS+"秒";
+            document.getElementById("timeShow").innerHTML =  "筛筛和天天已经在一起"+totDay+"天"+curH+"小时"+curM+"分"+curS+"秒啦~";
             t = setTimeout(time,1000); //设定定时器，循环执行
         }
     </script>
-<div class="bgimg display-container animate-opacity text-white">
-  <div class="display-middle">
-    <h1 class="jumbo animate-top">筛筛和天天已经在一起</h1>
-    <hr class="border-grey" style="margin:auto;width:40%">
-    <p class="large center">XXXX</p>
-  </div>
-</div>
+</head>
+<body>
+	<font size = 1>
+			<div id="timeShow">
+			</div>
+	</font>
+</body>
 </html>
