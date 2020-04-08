@@ -1,25 +1,20 @@
-<html>
- <head>
-  <title>HTML</title>
-  <style type="text/css">
- 
-  </style>
- </head>
- <body>
-    <div id="times">
-    </div>
-   <script type="text/javascript">
-     function  getD1(){
-         var date=new Date();
-         var d1=date.toLocaleString();
-         var div1=document.getElementById("times");
-         div1.innerHTML =d1;
- 
-     }
- 
-     setInterval("getD1();",1000);
- 
-    </script>
- 
- </body>
+     <html>
+<head>
+<title>
+</title>
+</head>
+<body>
+<!--
+获得当前日期（年月日）并显示在段落内
+-->
+    <p id="ymd"></p>
+    <script>
+        var date = new Date()<!--获得日期数据-->
+        var y = date.getFullYear();<!--年-->
+        var m = date.getMonth()+1;<!--月，这里的月份必须要+1才是当前月份-->
+        var d = date.getDate(); <!--日，getDay是获得当前星期几（0-6），getDate是获得当前日期-->
+        document.getElementById("ymd").innerHTML = "更新时间："+y+"-"+m+"-"+d;
+    </script>
+    <script type="text/javascript" src="dtxt1.js"></script>
+</body>
 </html>
