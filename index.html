@@ -1,5 +1,5 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>jQuery+CSS3星云密布旋转背景动画特效</title>
@@ -14,6 +14,44 @@ body {
   overflow: hidden;
 }
 
+
+.stars {
+  -webkit-transform: perspective(500px);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform: perspective(500px);
+  -moz-transform-style: preserve-3d;
+  -o-transform: perspective(500px);
+  -o-transform-style: preserve-3d;
+  transform: perspective(500px);
+  transform-style: preserve-3d;
+  position: absolute;
+  bottom: 0;
+  -webkit-perspective-origin: 50% 100%;
+  -moz-perspective-origin: 50% 100%;
+  -o-perspective-origin: 50% 100%;
+  perspective-origin: 50% 100%;
+  left: 50%;
+}
+
+.star {
+  width: 2px;
+  height: 2px;
+  background: #F7F7B6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-origin: 0 0 -300px;
+  -webkit-transform: translate3d(0, 0, -300px);
+  -moz-transform-origin: 0 0 -300px;
+  -moz-transform: translate3d(0, 0, -300px);
+  -o-transform-origin: 0 0 -300px;
+  -o-transform: translate3d(0, 0, -300px);
+  transform-origin: 0 0 -300px;
+  transform: translate3d(0, 0, -300px);
+  backface-visibility: hidden;
+}
+
+
 </style>
 
 </head>
@@ -25,7 +63,27 @@ body {
   HHHHHH
 </font>
 
-
+<script>
+$(document).ready(function(){
+  var stars=1600;  /*星星的密集程度，数字越大越多*/
+  var $stars=$(".stars");
+  var r=800;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
+  for(var i=0;i<stars;i++){
+    var $star=$("<div/>").addClass("star");
+    $stars.append($star);
+  }
+  $(".star").each(function(){
+    var cur=$(this);
+    var s=0.2+(Math.random()*1);
+    var curR=r+(Math.random()*300);
+    cur.css({ 
+      transformOrigin:"0 0 "+curR+"px",
+      transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
+       
+    })
+  })
+})
+</script>
 
 
 </body>
