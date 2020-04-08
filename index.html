@@ -126,7 +126,7 @@ body {
 </font>
 <script>
 $(document).ready(function(){
-  var stars=1600;  /*星星的密集程度，数字越大越多*/
+  var stars=2800;  /*星星的密集程度，数字越大越多*/
   var $stars=$(".stars");
   var r=500;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
   for(var i=0;i<stars;i++){
@@ -135,7 +135,7 @@ $(document).ready(function(){
   }
   $(".star").each(function(){
     var cur=$(this);
-    var s=0.2+(Math.random()*1);
+    var s=0.5+(Math.random()*1);
     var curR=r+(Math.random()*300);
     cur.css({ 
       transformOrigin:"0 0 "+curR+"px",
