@@ -1,55 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>World of Our Love</title>
-	<style>
-		body{text-align:center}
-		body,h1 {font-family: "Raleway", sans-serif}
-		body, html {height: 100%}
-		body{color:white}
-		body {
-		background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-		background-size: 400% 400%;
-		animation: gradient 15s ease infinite;
-		}
-		.main{
-    		text-align: center; /*让div内部文字居中*/
-    		border-radius: 20px;
-   		 width: 600px;
-    		height: 500px;
-    		margin: auto;
-    		position: absolute;
-    		top: 0;
-    		left: 0;
-    		right: 0;
-    		bottom: 0;
-		}
-		@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+<meta charset="utf-8">
+<title>World of Our Love</title>
+
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+
+<style>
+  body{text-align:center}
+    body,h1 {font-family: "Raleway", sans-serif}
+    body, html {height: 100%;
+      overflow: hidden;}
+
+    body{color:white}
+body {
+  background: radial-gradient(200% 100% at bottom center, #f7f7b6, #e96f92, #75517d, #1b2947);
+  background: radial-gradient(220% 105% at top center, #1b2947 10%, #75517d 40%, #e96f92 65%, #f7f7b6);
+  background-attachment: fixed;
+  overflow: hidden;
 }
-	</style>
+
+.main{
+        text-align: center; /*让div内部文字居中*/
+        border-radius: 20px;
+        width: 600px;
+        height: 500px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+</style>
+
 </head>
 <body>
-	<font size = 7>
-	<div class = "main">
-		<span style="color:red">&hearts;</span>筛筛和天天已经在一起<span style="color:red">&hearts;</span>
-			<div id="timeShow">
-			</div>
-		(｡･ω･｡)ﾉ♡
-		</div>
-	</font>
-	<script async language="javascript">
+
+<div class="stars"></div>  <!--背景层，不要删除，不然没有作用-->
+
+<font size=7>
+  <div class = "main">
+    <span style="color:red">&hearts;</span>筛筛和天天已经在一起<span style="color:red">&hearts;</span>
+      <div id="timeShow">
+      </div>
+    (｡･ω･｡)ﾉ♡
+    </div>
+</font>
+<script>
+$(document).ready(function(){
+  var stars=2800;  /*星星的密集程度，数字越大越多*/
+  var $stars=$(".stars");
+  var r=500;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
+  for(var i=0;i<stars;i++){
+    var $star=$("<div/>").addClass("star");
+    $stars.append($star);
+  }
+  $(".star").each(function(){
+    var cur=$(this);
+    var s=0.5+(Math.random()*1);
+    var curR=r+(Math.random()*300);
+    cur.css({ 
+      transformOrigin:"0 0 "+curR+"px",
+      transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
+       
+    })
+  })
+})
+</script>
+<script async language="javascript">
         var t = null;
-	t = setTimeout(time,1); //设定定时器，循环执行
+  t = setTimeout(time,1); //设定定时器，循环执行
         function time()
         {
             clearTimeout(t);//清除定时器
@@ -67,7 +88,7 @@
             var resDate = 0;
             for (var i=0;i<delta_m;i++)
             {
-            	resDate = resDate + mDay[i];
+              resDate = resDate + mDay[i];
             }
             var yearDay = Math.ceil((delta_y)/4)+delta_y*365-1;
             var totDay = resDate+yearDay+d;
@@ -79,11 +100,11 @@
             var curS = 0;
             if(dtt>=0)
             {
-            	totDay = totDay + 1;
+              totDay = totDay + 1;
             }
             else
             {
-            	dtt = 86400 - stdsec + tmpsec;
+              dtt = 86400 - stdsec + tmpsec;
             }
             var curH = Math.floor(dtt/3600);
             var curM = Math.floor((dtt-curH*3600)/60);
@@ -92,5 +113,6 @@
             t = setTimeout(time,1000); //设定定时器，循环执行
         }
     </script>
+
 </body>
 </html>
