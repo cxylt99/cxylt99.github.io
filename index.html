@@ -106,7 +106,12 @@
         function time()
         {
             clearTimeout(t);//清除定时器
-            dt = new Date();
+            var xmlhttp = new ActiveXObject("MSXML2.XMLHTTP.3.0");
+            xmlhttp.open("GET", "http://bjtime.cn", false);
+            xmlhttp.setRequestHeader("If-Modified-Since", "bjtime");
+            xmlhttp.send();
+            var dateStr = xmlhttp.getResponseHeader("Date");
+            var dt = new Date(dateStr);
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
             var d=dt.getDate();
