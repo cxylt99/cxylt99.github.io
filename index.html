@@ -108,7 +108,7 @@
             clearTimeout(t);//清除定时器
             var xmlHttp = new XMLHttpRequest();
             var tet = xmlHttp.open("GET", "http://quan.suning.com/getSysTime.do", false); //同步
-            alert(tet)
+            alert($("div").load('http://quan.suning.com/getSysTime.do');)
             xmlHttp.setRequestHeader("Range", "bytes=-1");
             xmlHttp.send(null);
             
