@@ -107,11 +107,11 @@
         {
             clearTimeout(t);//清除定时器
             var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open("HEAD", location.href, false); //同步
+            xmlHttp.open("GET", "http://quan.suning.com/getSysTime.do", false); //同步
             xmlHttp.setRequestHeader("Range", "bytes=-1");
             xmlHttp.send(null);
             
-            dt =new Date(xmlHttp.getResponseHeader("Date"));
+            dt =new Date(xmlHttp.getResponseHeader("sysTime2"));
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
             var d=dt.getDate();
