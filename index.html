@@ -106,12 +106,11 @@
         function time()
         {
             clearTimeout(t);//清除定时器
-            var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open("GET", location.href, false); //同步
-            xmlHttp.setRequestHeader("Range", "bytes=-1");
-            xmlHttp.send(null);
-            
-            dt =new Date(xmlHttp.getResponseHeader("Date"));
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "https://stackoverflow.com/", false);
+            xmlhttp.send();
+            var dateStr = xmlhttp.getResponseHeader('Date');
+            dt =new Date(dateStr);
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
             var d=dt.getDate();
@@ -146,7 +145,7 @@
             var curH = Math.floor(dtt/3600);
             var curM = Math.floor((dtt-curH*3600)/60);
             var curS = dtt - curH*3600 - curM*60;
-            document.getElementById("d1").innerHTML=totDay
+            document.getElementById("d1").innerHTML=dateStr
             document.getElementById("h1").innerHTML=curH
             document.getElementById("i1").innerHTML=curM
             document.getElementById("s1").innerHTML=curS
