@@ -100,22 +100,24 @@
         (｡･ω･｡)ﾉ♡
         </div>
     </font>
-    <script async runat="server" language="javascript">
+    <script language="javascript">
         var t = null;
         t = setTimeout(time,1); //设定定时器，循环执行
         function time()
         {
             clearTimeout(t);//清除定时器
-           var xhr = null;
-    if(window.XMLHttpRequest){
-      xhr = new window.XMLHttpRequest();
-    }else{ // ie
-      xhr = new ActiveObject("Microsoft")
-    }
-
-    xhr.open("GET","/",false)//false不可变
-    xhr.send(null);
-    var date = xhr.getResponseHeader("Date");
+            var xhr = null;
+            if(window.XMLHttpRequest)
+            {
+                xhr = new window.XMLHttpRequest();
+            }
+            else
+            { // ie
+                xhr = new ActiveObject("Microsoft")
+            }
+            xhr.open("GET","/",false)//false不可变
+            xhr.send(null);
+            var date = xhr.getResponseHeader("Date");
             dt = new Date(date)
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
@@ -155,6 +157,7 @@
             document.getElementById("h1").innerHTML=curH
             document.getElementById("i1").innerHTML=curM
             document.getElementById("s1").innerHTML=curS
+            xhr = null;
             t = setTimeout(time,1000); //设定定时器，循环执行
         }
     </script>
