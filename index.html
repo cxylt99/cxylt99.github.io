@@ -115,7 +115,7 @@
             { // ie
                 xhr = new ActiveObject("Microsoft")
             }
-            xhr.open("GET","/",true)//false不可变
+            xhr.open("GET","/",false)//false不可变
             xhr.send(null);
             var date = xhr.getResponseHeader("Date");
             dt = new Date(date);
