@@ -106,7 +106,7 @@
         function time()
         {
             clearTimeout(t);//清除定时器
-            dt = new Date();
+            dt = new Date($ajax({async:false}).getResponseHeader("Date"));
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
             var d=dt.getDate();
