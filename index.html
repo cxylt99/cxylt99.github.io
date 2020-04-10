@@ -102,15 +102,21 @@
     </font>
     <script async language="javascript">
         var t = null;
-    t = setTimeout(time,1); //设定定时器，循环执行
+        t = setTimeout(time,1); //设定定时器，循环执行
         function time()
         {
             clearTimeout(t);//清除定时器
-            var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open("GET", location.href, false); //同步
-            xmlHttp.setRequestHeader("Range", "bytes=-1");
-            xmlHttp.send(null);
-            dt =new Date(xmlHttp.getResponseHeader("Date"));
+             var xhr = null;
+            if(window.XMLHttpRequest){
+                xhr = new window.XMLHttpRequest();
+            }else{ 
+            xhr = new ActiveObject("Microsoft")
+            }
+ 
+            xhr.open("HEAD","http://www.baidu.com",false); //此处为同步模式，异步模式请自己修改
+            xhr.send(null);
+            var dstr=xhr.getResponseHeader("Date");
+            var dt=new Date(dstr);
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
             var d=dt.getDate();
