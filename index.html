@@ -1,37 +1,152 @@
-<p id="time"></p>
-<script>
-  var t = null;
-  t = setTimeout(time,1);
-time()
-  function time(option)
-  {
-    clearTimeout(t);
-    var xhr = null;
-    if(window.XMLHttpRequest)
-    {
-      xhr = new window.XMLHttpRequest();
-    }
-    else
-    { // ie
-      xhr = new ActiveObject("Microsoft")
-    }
-    // 通过get的方式请求当前文件
-    xhr.open("get","/");
-    xhr.send(null);
-    // 监听请求状态变化
-    xhr.onreadystatechange = function()
-    {
-      var time = null,
-          curDate = null;
-      if(xhr.readyState===2)
-      {
-        // 获取响应头里的时间戳
-        time = xhr.getResponseHeader("Date");
-        console.log(xhr.getAllResponseHeaders())
-        curDate = new Date(time);
-        document.getElementById("time").innerHTML = "服务器时间是："+curDate.getFullYear()+"-"+(curDate.getMonth()+1)+"-"+curDate.getDate()+" "+curDate.getHours()+":"+curDate.getMinutes()+":"+curDate.getSeconds();
-      }
-    }
-    t = setTimeout(time,1000);
-  }
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>World of Our Love</title>
+    <style>
+        body{text-align:center}
+        body,h1 {font-family: "Raleway", sans-serif}
+        body, html {height: 100%}
+        body{color:white}
+        body {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        }
+        .main{
+            text-align: center; /*让div内部文字居中*/
+            border-radius: 20px;
+            font-size:60px;
+         width: 750px;
+            height: 500px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .clockBlock
+
+        {
+            font-size: 44px; 
+            text-align: center; 
+            padding-top: 20px;
+
+        }
+        .clockBlock span
+        {
+            display: inline-block; 
+            width: 80px; 
+            height: 80px;
+            line-height:0px;
+            padding: 15px; 
+            border-radius: 10px
+        }
+        .clockBlock p
+        {
+            padding:0px;
+        }
+        span.red{background: #ff0000}
+        span.yg{background: yellowgreen}
+        span.or{background: orange}
+        span.pi{background: palevioletred}
+        span.pk{background: #00a0e9}
+        span.mk{background: #1FADC5}
+
+        @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+        }
+    </style>
+</head>
+<body>
+    <font size = 7>
+    <div class = "main">
+        <span style="color:red">&hearts;</span>筛筛和天天已经在一起<span style="color:red">&hearts;</span>
+            <div>
+    <div class="clockBlock">
+
+        <span class="yg">
+            <p id="d1"></p>
+            <p> &nbsp;</p>
+            <p>天</p>
+        </span>
+        <span class="or">
+            <p id="h1"></p>
+            <p> &nbsp;</p>
+            <p>时</p>
+        </span>
+        <span class="pi">
+            <p id="i1"></p>
+            <p> &nbsp;</p>
+            <p>分</p>
+        </span>
+        <span class="pk">
+            <p id="s1"></p>
+            <p> &nbsp;</p>
+            <p>秒</p>
+        </span>
+    </div>
+</div>
+
+        (｡･ω･｡)ﾉ♡
+        </div>
+    </font>
+    <script async runat="server" language="javascript">
+        var t = null;
+    t = setTimeout(time,1); //设定定时器，循环执行
+        function time()
+        {
+            clearTimeout(t);//清除定时器
+            dt = new Date();
+            var y=dt.getYear()+1900;
+            var mm=dt.getMonth()+1;
+            var d=dt.getDate();
+            var mDay = [31,28,31,30,31,30,31,31,30,31,30,31];
+            var day=dt.getDay();
+            var h=dt.getHours();
+            var m=dt.getMinutes();
+            var s=dt.getSeconds();
+            var delta_y = y - 2020;
+            var delta_m = mm - 1;
+            var resDate = 0;
+            for (var i=0;i<delta_m;i++)
+            {
+                resDate = resDate + mDay[i];
+            }
+            var yearDay = Math.ceil((delta_y)/4)+delta_y*365-1;
+            var totDay = resDate+yearDay+d;
+            var tmpsec = 60*60*h+60*m+s;
+            var stdsec = 60*60*1+60*45+0;
+            var dtt = tmpsec - stdsec;
+            var curH = 0;
+            var curM = 0;
+            var curS = 0;
+            if(dtt>=0)
+            {
+                totDay = totDay + 1;
+            }
+            else
+            {
+                dtt = 86400 - stdsec + tmpsec;
+            }
+            var curH = Math.floor(dtt/3600);
+            var curM = Math.floor((dtt-curH*3600)/60);
+            var curS = dtt - curH*3600 - curM*60;
+            document.getElementById("d1").innerHTML=totDay
+            document.getElementById("h1").innerHTML=curH
+            document.getElementById("i1").innerHTML=curM
+            document.getElementById("s1").innerHTML=curS
+            t = setTimeout(time,1000); //设定定时器，循环执行
+        }
+    </script>
+</body>
+</html>
