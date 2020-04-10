@@ -107,11 +107,16 @@
         {
             clearTimeout(t);//清除定时器
             var xmlHttp = new XMLHttpRequest();
+            if(window.XMLHttpRequest)
+            {
+                xmlHttp = new window.XMLHttpRequest();
+            }
+            else
+            { // ie
+                xmlHttp = new ActiveObject("Microsoft")
+            }
             xmlHttp.open("GET", "http://bjtime.cn", false); //同步
-            xmlHttp.setRequestHeader("Range", "bytes=-1");
             xmlHttp.send(null);
-            var headers =  xmlHttp.getAllResponseHeaders();
-            alert(headers);
             dt =new Date(xmlHttp.getResponseHeader("Date"));
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
