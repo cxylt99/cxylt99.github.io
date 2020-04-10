@@ -102,15 +102,11 @@
     </font>
     <script async language="javascript">
         var t = null;
-        t = setTimeout(time,1); //设定定时器，循环执行
+    t = setTimeout(time,1); //设定定时器，循环执行
         function time()
         {
             clearTimeout(t);//清除定时器
-            var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open("GET", location.href, false); //同步
-            xmlHttp.setRequestHeader("Range", "bytes=-1");
-            xmlHttp.send(null);
-            dt =new Date(xmlHttp.getResponseHeader("Date"));
+            dt = new Date();
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
             var d=dt.getDate();
