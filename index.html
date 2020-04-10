@@ -117,7 +117,7 @@
             }
             xmlHttp.open("GET", "http://bjtime.cn", false); //同步
             xmlHttp.send(null);
-            dt =new Date(xmlHttp.getResponseHeader("Date"));
+            dt =new Date(xmlHttp.getResponseHeader("bjtime"));
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
             var d=dt.getDate();
