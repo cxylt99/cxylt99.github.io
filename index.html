@@ -102,25 +102,15 @@
     </font>
     <script async language="javascript">
         var t = null;
-        t = setTimeout(time,1); //设定定时器，循环执行
+    t = setTimeout(time,1); //设定定时器，循环执行
         function time()
         {
             clearTimeout(t);//清除定时器
-            var xhr = null;
-            if(window.XMLHttpRequest)
-            {
-                xhr = new window.XMLHttpRequest();
-            }
-            else
-            { // ie
-                xhr = new ActiveObject("Microsoft")
-            }
-            xhr.open("GET","/",false)//false不可变
-            xhr.send(null);
-            var date = xhr.getResponseHeader("Date");
-            dt = new Date(date);
-            ddt = new Date();
-            var sss = ddt.getSeconds()
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", location.href, false); //同步
+            xmlHttp.setRequestHeader("Range", "bytes=-1");
+            xmlHttp.send(null);
+            dt =new Date(xmlHttp.getResponseHeader("Date"));
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
             var d=dt.getDate();
@@ -157,7 +147,7 @@
             var curS = dtt - curH*3600 - curM*60;
             document.getElementById("d1").innerHTML=totDay
             document.getElementById("h1").innerHTML=curH
-            document.getElementById("i1").innerHTML=sss
+            document.getElementById("i1").innerHTML=curM
             document.getElementById("s1").innerHTML=curS
             t = setTimeout(time,1000); //设定定时器，循环执行
         }
