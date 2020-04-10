@@ -102,16 +102,27 @@
     </font>
     <script async runat="server" language="javascript">
         var t = null;
+        
+function getNowFormatDate() {
+    var currentdate;
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        url: 'http://quan.suning.com/getSysTime.do',
+        success: function (data) {
+            var data = data.sysTime2;
+            currentdate = data.slice(0, 16);
+        }
+    })
+    console.log(currentdate);
+    return currentdate
+}
     t = setTimeout(time,1); //设定定时器，循环执行
         function time()
         {
             clearTimeout(t);//清除定时器
-            var xmlhttp = new ActiveXObject("MSXML2.XMLHTTP.3.0");
-            xmlhttp.open("GET", "http://bjtime.cn", false);
-            xmlhttp.setRequestHeader("If-Modified-Since", "bjtime");
-            xmlhttp.send();
-            var dateStr = xmlhttp.getResponseHeader("Date");
-            var dt = new Date(dateStr);
+            var dt = getNowFormatDate();
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
             var d=dt.getDate();
