@@ -110,7 +110,6 @@
             xmlHttp.open("GET", location.href, false); //同步
             xmlHttp.setRequestHeader("Range", "bytes=-1");
             xmlHttp.send(null);
-            
             dt =new Date(xmlHttp.getResponseHeader("Date"));
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
