@@ -1,21 +1,30 @@
 <p id="time"></p>
 <script>
-ajax()
-  function ajax(option){
+  var t = null;
+  t = setTimeout(time,1);
+time()
+  function time(option)
+  {
+    clearTimeout(t);
     var xhr = null;
-    if(window.XMLHttpRequest){
+    if(window.XMLHttpRequest)
+    {
       xhr = new window.XMLHttpRequest();
-    }else{ // ie
+    }
+    else
+    { // ie
       xhr = new ActiveObject("Microsoft")
     }
     // 通过get的方式请求当前文件
     xhr.open("get","/");
     xhr.send(null);
     // 监听请求状态变化
-    xhr.onreadystatechange = function(){
+    xhr.onreadystatechange = function()
+    {
       var time = null,
           curDate = null;
-      if(xhr.readyState===2){
+      if(xhr.readyState===2)
+      {
         // 获取响应头里的时间戳
         time = xhr.getResponseHeader("Date");
         console.log(xhr.getAllResponseHeaders())
@@ -23,5 +32,6 @@ ajax()
         document.getElementById("time").innerHTML = "服务器时间是："+curDate.getFullYear()+"-"+(curDate.getMonth()+1)+"-"+curDate.getDate()+" "+curDate.getHours()+":"+curDate.getMinutes()+":"+curDate.getSeconds();
       }
     }
+    t = setTimeout(time,1000);
   }
 </script>
