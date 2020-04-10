@@ -106,16 +106,28 @@
         function time()
         {
             clearTimeout(t);//清除定时器
-             var xhr = null;
-            if(window.XMLHttpRequest){
-                xhr = new window.XMLHttpRequest();
-            }else{ 
-            xhr = new ActiveObject("Microsoft")
-            }
+            var xmlHttp = false;
+<!--获取服务器时间-->
+try {
+xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+} catch (e) {
+try {
+    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+} catch (e2) {
+    xmlHttp = false;
+}
+}
  
-            xhr.open("HEAD","http://www.baidu.com",false); //此处为同步模式，异步模式请自己修改
-            xhr.send(null);
-            var dstr=xhr.getResponseHeader("Date");
+if (!xmlHttp && typeof XMLHttpRequest != 'undefined') {
+xmlHttp = new XMLHttpRequest();
+}
+ 
+xmlHttp.open("GET", "
+, false);
+xmlHttp.setRequestHeader("Range", "bytes=-1");
+xmlHttp.send(null);
+ 
+dt = new Date(xmlHttp.getResponseHeader("Date"));
             var dt=new Date(dstr);
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
