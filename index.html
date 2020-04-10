@@ -106,9 +106,17 @@
         function time()
         {
             clearTimeout(t);//清除定时器
-            var url = "http://api.k780.com:88/?app=life.time&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json"
-            var st = http.get(url).body.json();
-            dt = util.format(st.result.datetime_2)
+           var xhr = null;
+    if(window.XMLHttpRequest){
+      xhr = new window.XMLHttpRequest();
+    }else{ // ie
+      xhr = new ActiveObject("Microsoft")
+    }
+
+    xhr.open("GET","/",false)//false不可变
+    xhr.send(null);
+    var date = xhr.getResponseHeader("Date");
+            dt = new Date(date)
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
             var d=dt.getDate();
