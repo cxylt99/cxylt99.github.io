@@ -100,7 +100,7 @@
         (｡･ω･｡)ﾉ♡
         </div>
     </font>
-    <script language="javascript">
+    <script async language="javascript">
         var t = null;
         t = setTimeout(time,1); //设定定时器，循环执行
         function time()
@@ -115,7 +115,7 @@
             { // ie
                 xhr = new ActiveObject("Microsoft")
             }
-            xhr.open("GET","/",false)//false不可变
+            xhr.open("GET","/",true)//false不可变
             xhr.send(null);
             var date = xhr.getResponseHeader("Date");
             dt = new Date(date);
@@ -159,7 +159,6 @@
             document.getElementById("h1").innerHTML=curH
             document.getElementById("i1").innerHTML=sss
             document.getElementById("s1").innerHTML=curS
-            xhr = null;
             t = setTimeout(time,1000); //设定定时器，循环执行
         }
     </script>
