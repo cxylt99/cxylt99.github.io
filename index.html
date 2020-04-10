@@ -106,19 +106,7 @@
         function time()
         {
             clearTimeout(t);//清除定时器
-            var xhr = null;
-            if(window.XMLHttpRequest)
-            {
-                xhr = new window.XMLHttpRequest();
-            }
-            else
-            { // ie
-                xhr = new ActiveObject("Microsoft")
-            }
-            xhr.open("GET","/",false)//false不可变
-            xhr.send(null);
-            var date = xhr.getResponseHeader("Date");
-            dt = new Date(date)
+            dt = new Date($.ajax({async: false}).getResponseHeader("Date"));
             var y=dt.getYear()+1900;
             var mm=dt.getMonth()+1;
             var d=dt.getDate();
